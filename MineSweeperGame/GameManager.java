@@ -2,13 +2,27 @@ import java.util.Scanner;
 
 public class GameManager {
 
-    public static void startGame(MineSweeper mineSweeper) {
+    public static void initializeGame(){
         Scanner input = new Scanner(System.in);
+
+        System.out.println("Mayın Tarlası Oyuna Hoşgeldiniz !");
+
+        System.out.print("Lütfen satır adetini giriniz : ");
+        int rowCount = input.nextInt();
+
+        System.out.print("Lütfen sütun adetini giriniz : ");
+        int colCount = input.nextInt();
+
+        System.out.println("Mayınların Konumu");
+        MineSweeper mineSweeper = new MineSweeper(rowCount, colCount);
+        startGame(mineSweeper, input);
+    }
+    public static void startGame(MineSweeper mineSweeper, Scanner input) {
         int x, y;
         GameState selectionResult;
 
         System.out.println( "===========================\n" +
-                            "Mayın Tarlası Oyuna Hoşgeldiniz !" );
+                            "Oyun başlamıştır !" );
 
         while(mineSweeper.isThereHiddenEmptyFieldPart()){
             mineSweeper.printMineField(false);
